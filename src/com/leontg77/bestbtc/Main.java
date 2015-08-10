@@ -1,6 +1,7 @@
 package com.leontg77.bestbtc;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.logging.Logger;
 
 import org.bukkit.Bukkit;
@@ -20,7 +21,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 public class Main extends JavaPlugin implements Listener {
 	private final Logger logger = Bukkit.getServer().getLogger();
-	private ArrayList<String> list = new ArrayList<String>();
+	private HashSet<String> list = new HashSet<String>();
 	private boolean enabled = false;
 	private BukkitRunnable task;
 	public static Main plugin;
@@ -89,16 +90,17 @@ public class Main extends JavaPlugin implements Listener {
 			}
 			
 			StringBuilder pvelist = new StringBuilder("");
+			ArrayList<String> pve = new ArrayList<String>(list);
 			
-			for (int i = 0; i < list.size(); i++) {
-				if (pvelist.length() > 0 && i == list.size() - 1) {
+			for (int i = 0; i < pve.size(); i++) {
+				if (pvelist.length() > 0 && i == pve.size() - 1) {
 					pvelist.append(" §7and §6");
 				}
-				else if (pvelist.length() > 0 && pvelist.length() != list.size()) {
+				else if (pvelist.length() > 0 && pvelist.length() != pve.size()) {
 					pvelist.append("§7, §6");
 				}
 				
-				pvelist.append(ChatColor.GOLD + list.get(i));
+				pvelist.append(ChatColor.GOLD + pve.get(i));
 			}
 			
 			sender.sendMessage(Main.prefix() + "People still on the best pve list: §6" + (pvelist.length() > 0 ? pvelist.toString().trim() : "None") + "§7.");
