@@ -1,0 +1,14 @@
+name: BestBTC
+main: com.leontg77.bestbtc.Main
+version: 1.0.1
+author: LeonTG77
+description: Plugin for the UHC scenario best btc
+commands:
+  btc:
+    description: Disable/Enable the scenario or add/remove someone from the list.
+  blist:
+    description: Check whos still on the list.
+permissions:
+  btc.manage:
+    description: Allows management of the BestBTC scenario.
+    default: op
